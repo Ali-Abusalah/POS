@@ -1,9 +1,0 @@
-
- INFO Server running on [http://127.0.0.1:8001]. 
-
- Press Ctrl+C to stop the server
-
- 2026-09-01 14:25:58 /api/auth/me .. ~ 11s
- 2026-09-01 14:26:10 /api/auth/me .. ~ 3.75ms
- 2026-09-01 14:26:10 /api/dashboard .. ~ 1s
- 2026-09-01 14:26:12 /api/dashboard .. ~ 509.62ms
