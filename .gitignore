@@ -29,7 +29,6 @@ Thumbs.db
 # POS specific
 *.vbs
 *.lnk
-*.bat
 *.zip
 cookies*.txt
 php*.txt
