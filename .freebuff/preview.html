@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS System - Freebuff Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #eee; display: flex; flex-direction: column; height: 100vh; }
+        .header { background: #16213e; padding: 8px 16px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #0f3460; }
+        .header h1 { font-size: 14px; font-weight: 600; color: #e94560; }
+        .header .status { font-size: 12px; color: #4ade80; }
+        .header .status.off { color: #f87171; }
+        iframe { flex: 1; border: none; width: 100%; }
+        .loading { display: flex; align-items: center; justify-content: center; flex: 1; font-size: 16px; color: #94a3b8; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🛒 POS System</h1>
+        <span class="status" id="status">⏳ Connecting to dev server...</span>
+    </div>
+    <div class="loading" id="loading">Loading POS System...</div>
+    <iframe id="app" src="http://127.0.0.1:8000/admin/login" style="display:none;" onload="onLoad()" onerror="onError()"></iframe>
+    <script>
+        function onLoad() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('app').style.display = 'block';
+            document.getElementById('status').textContent = '✅ Running on port 8000';
+        }
+        function onError() {
+            document.getElementById('loading').textContent = '❌ Could not connect to dev server on port 8000. Make sure it is running.';
+            document.getElementById('status').textContent = '❌ Server offline';
+            document.getElementById('status').className = 'status off';
+        }
+        // Auto-refresh connection check
+        setTimeout(function() {
+            var s = document.getElementById('status');
+            if (s.textContent.includes('Connecting')) {
+                s.textContent = '⏳ Still connecting...';
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
