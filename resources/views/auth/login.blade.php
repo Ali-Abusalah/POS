@@ -260,7 +260,7 @@
             <span>Employee Login Panel</span>
         </div>
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="/login">
             @csrf
 
             @if($errors->any())
