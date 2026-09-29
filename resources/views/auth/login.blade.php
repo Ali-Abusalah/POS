@@ -314,34 +314,6 @@
             </button>
         </form>
 
-        <script>
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            var form = this;
-            var btn = document.querySelector('.login-btn');
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Logging in...';
-            btn.disabled = true;
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', form.action, true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onload = function() {
-                if (xhr.status === 200 || xhr.status === 302) {
-                    window.location.href = '/pos';
-                } else {
-                    document.body.innerHTML = '<div style="padding:2rem;text-align:center;font-family:sans-serif;"><h2>Login Failed</h2><p>Email or password is incorrect.</p><a href="/login" style="color:#000080;">Try Again</a></div>';
-                }
-            };
-            xhr.onerror = function() {
-                btn.innerHTML = '<i class="fa-solid fa-lock"></i> Login';
-                btn.disabled = false;
-                alert('Network error. Check your connection.');
-            };
-            var data = new FormData(form);
-            xhr.send(new URLSearchParams(data));
-        });
-        </script>
-
         <div class="client-divider">
             <span>Are you a client ?</span>
         </div>
